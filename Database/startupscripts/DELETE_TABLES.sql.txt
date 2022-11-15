@@ -1,0 +1,4 @@
+
+DROP TABLE People;
+
+DROP TABLE Departments;

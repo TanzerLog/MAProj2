@@ -1,0 +1,12 @@
+
+INSERT INTO Departments ('Name') VALUES ('General');
+INSERT INTO Departments ('Name') VALUES ('Information Communications Technology');
+INSERT INTO Departments ('Name') VALUES ('Finance');
+INSERT INTO Departments ('Name') VALUES ('Marketing');
+INSERT INTO Departments ('Name') VALUES ('Human Resources');
+
+INSERT INTO People (Name, Phone, DepartmentID, Street, City, State, ZIP, Country) VALUES ('John Smith', '0299882211', 1, '1 Code Lane', 'Javaville', 'NSW', '0100', 'Australia');
+INSERT INTO People (Name, Phone, DepartmentID, Street, City, State, ZIP, Country) VALUES ('Sue White', '0388992255', 2, '16 Bit Way', 'Byte Cove', 'QLD', '1101', 'Australia');
+INSERT INTO People (Name, Phone, DepartmentID, Street, City, State, ZIP, Country) VALUES ('Bob O’Bits', '0577882255', 3, '8 Silicon Road', 'Cloud Hills', 'VIC', '1001', 'Australia');
+INSERT INTO People (Name, Phone, DepartmentID, Street, City, State, ZIP, Country) VALUES ('Mary Blue', '0644559988', 2, '4 Processor Boulevard', 'Appletson', 'NT', '1010', 'Australia');
+INSERT INTO People (Name, Phone, DepartmentID, Street, City, State, ZIP, Country) VALUES ('Mick Green', '0299881122', 3, '700 Bandwidth Street', 'Bufferland', 'NSW', '0110', 'Australia');
