@@ -1,10 +1,10 @@
 import * as React from "react";
-import { Button, Text, View } from "react-native";
+import { Button, Text, View, StyleSheet } from "react-native";
 
 export function HomeScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>ROI Staff Directory App</Text>
+    <View style={styles.container}>
+      <Text style={styles.titleText}>ROI Staff Directory App</Text>
       <Button
         onPress={(e) => navigation.navigate("Directory")}
         color={"#941a1d"}
@@ -13,3 +13,17 @@ export function HomeScreen({ navigation }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#D9D9D9",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  titleText: {
+    color: "#262626",
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+});

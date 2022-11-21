@@ -1,30 +1,44 @@
-import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { HomeScreen } from "./Screens/HomeScreen.js";
+import * as React from "react";
 import { EmployeeDirectory } from "./Screens/EmployeeDirectory.js";
-import { useEffect, useState } from "react";
+import { HomeScreen } from "./Screens/HomeScreen.js";
+import { InspectEmployee } from "./Screens/InspectEmployee.js";
+import { ModifyEmployee } from "./Screens/ModifyEmployee.js";
+import { AddEmployee } from "./Screens/AddEmployee.js";
 
 const Stack = createNativeStackNavigator();
 
-function App() {
-  const [bank, setBank] = useState([]);
-
-  useEffect(() => {
-    fetch("http://192.168.20.12:3000/get_all_people").then(async (res) => {
-      setBank(await res.json());
-      console.log(await res.json());
-    });
-  }, []);
-
+export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Directory" component={EmployeeDirectory} />
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Directory"
+          component={EmployeeDirectory}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Employee"
+          component={InspectEmployee}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Modify"
+          component={ModifyEmployee}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Add"
+          component={AddEmployee}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-export default App;
