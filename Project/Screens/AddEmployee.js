@@ -33,7 +33,7 @@ export function AddEmployee({ navigation }) {
 
   const [name, onChangeName] = useState("");
   const [phone, onChangePhone] = useState("");
-  const [selectedDepartment, setSelectedDepartment] = useState("");
+  const [selectedDepartment, setSelectedDepartment] = useState(1);
   const [street, onChangeStreet] = useState("");
   const [city, onChangeCity] = useState("");
   const [state, onChangeState] = useState("");
@@ -68,6 +68,9 @@ export function AddEmployee({ navigation }) {
     <ScrollView contentContainerStyle={styles.scroll}>
       <View style={styles.container}>
         <Text style={styles.titleText}>Add Employee</Text>
+        <Text style={styles.smallText}>
+          Department will default to General if none is selected.
+        </Text>
         <View>
           <Text style={styles.smallText}>Name:</Text>
           <TextInput
@@ -130,21 +133,21 @@ export function AddEmployee({ navigation }) {
             //tests that each input has a value, adds all values to employeeDetails if it does and adds new employee to database
             onPress={async () => {
               if (
-                employeeDetails["Name"] != null &&
-                employeeDetails["Name"] != "" &&
-                employeeDetails["Phone"] != null &&
-                employeeDetails["Phone"] != "" &&
-                employeeDetails["DepartmentID"] != null &&
-                employeeDetails["Street"] != null &&
-                employeeDetails["Street"] != "" &&
-                employeeDetails["City"] != null &&
-                employeeDetails["City"] != "" &&
-                employeeDetails["State"] != null &&
-                employeeDetails["State"] != "" &&
-                employeeDetails["ZIP"] != null &&
-                employeeDetails["ZIP"] != "" &&
-                employeeDetails["Country"] != null &&
-                employeeDetails["Country"] != ""
+                name != null &&
+                name != "" &&
+                phone != null &&
+                phone != "" &&
+                selectedDepartment != null &&
+                street != null &&
+                street != "" &&
+                city != null &&
+                city != "" &&
+                state != null &&
+                state != "" &&
+                zip != null &&
+                zip != "" &&
+                country != null &&
+                country != ""
               ) {
                 employeeDetails["Name"] = name;
                 employeeDetails["Phone"] = phone;
