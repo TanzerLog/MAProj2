@@ -1,5 +1,6 @@
 import * as React from "react";
 import {
+  Alert,
   Text,
   Button,
   View,
@@ -24,6 +25,7 @@ export function AddEmployee({ navigation }) {
     });
   }, []);
 
+  //extracts departments from database and converts them for use in drop down list
   let newArray = bank.map((item) => {
     return { key: item["DepartmentID"], value: item["Name"] };
   });
@@ -38,6 +40,7 @@ export function AddEmployee({ navigation }) {
   const [zip, onChangeZIP] = useState("");
   const [country, onChangeCountry] = useState("");
 
+  //function for adding a new staff member to the database
   const addPerson = async (employeeDetails) => {
     const response = await fetch(ip + "/add_person", {
       method: "POST",
@@ -49,6 +52,7 @@ export function AddEmployee({ navigation }) {
     });
   };
 
+  //creates JSON object that has fields matching People database objects to ensure standardisation of design of employeeDetails across app
   let employeeDetails = {
     ["Name"]: null,
     ["Phone"]: null,
@@ -121,27 +125,52 @@ export function AddEmployee({ navigation }) {
             value={country}
           ></TextInput>
         </View>
-        <Button
-          onPress={async () => {
-            employeeDetails["Name"] = name;
-            employeeDetails["Phone"] = phone;
-            employeeDetails["DepartmentID"] = selectedDepartment;
-            employeeDetails["Street"] = street;
-            employeeDetails["City"] = city;
-            employeeDetails["State"] = state;
-            employeeDetails["ZIP"] = zip;
-            employeeDetails["Country"] = country;
-            await addPerson(employeeDetails);
-            navigation.navigate("Directory");
-          }}
-          color={"#941a1d"}
-          title={"Add"}
-        />
-        <Button
-          onPress={() => navigation.navigate("Directory")}
-          color={"#941a1d"}
-          title={"Back to Directory"}
-        />
+        <View style={{ margin: 5 }}>
+          <Button
+            //tests that each input has a value, adds all values to employeeDetails if it does and adds new employee to database
+            onPress={async () => {
+              if (
+                employeeDetails["Name"] != null &&
+                employeeDetails["Name"] != "" &&
+                employeeDetails["Phone"] != null &&
+                employeeDetails["Phone"] != "" &&
+                employeeDetails["DepartmentID"] != null &&
+                employeeDetails["Street"] != null &&
+                employeeDetails["Street"] != "" &&
+                employeeDetails["City"] != null &&
+                employeeDetails["City"] != "" &&
+                employeeDetails["State"] != null &&
+                employeeDetails["State"] != "" &&
+                employeeDetails["ZIP"] != null &&
+                employeeDetails["ZIP"] != "" &&
+                employeeDetails["Country"] != null &&
+                employeeDetails["Country"] != ""
+              ) {
+                employeeDetails["Name"] = name;
+                employeeDetails["Phone"] = phone;
+                employeeDetails["DepartmentID"] = selectedDepartment;
+                employeeDetails["Street"] = street;
+                employeeDetails["City"] = city;
+                employeeDetails["State"] = state;
+                employeeDetails["ZIP"] = zip;
+                employeeDetails["Country"] = country;
+                await addPerson(employeeDetails);
+                navigation.navigate("Directory");
+              } else {
+                alert("All fields must have a value to add a new employee");
+              }
+            }}
+            color={"#941a1d"}
+            title={"Add"}
+          />
+        </View>
+        <View style={{ margin: 5 }}>
+          <Button
+            onPress={() => navigation.navigate("Directory")}
+            color={"#941a1d"}
+            title={"Back to Directory"}
+          />
+        </View>
       </View>
     </ScrollView>
   );

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button, Text, View, StyleSheet } from "react-native";
+import { Button, Text, View, StyleSheet, Image } from "react-native";
 
 export function HomeScreen({ navigation }) {
   return (
@@ -25,5 +25,9 @@ const styles = StyleSheet.create({
     color: "#262626",
     fontSize: 30,
     fontWeight: "bold",
+  },
+  logo: {
+    width: 421,
+    height: 219,
   },
 });

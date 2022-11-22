@@ -18,6 +18,7 @@ export function EmployeeDirectory({ navigation }) {
   const ip = "http://192.168.20.10:3000";
 
   //sends request to database for the entire People table and stores response as a JSON object
+  //sends a new request every time this screen is displayed to ensure rendered data is up to date
   useEffect(() => {
     fetch(ip + "/get_all_people").then(async (res) => {
       setBank(await res.json());
@@ -32,11 +33,13 @@ export function EmployeeDirectory({ navigation }) {
           Select a Staff Member below to inspect/modify their details, or add a
           new Staff Member.
         </Text>
-        <Button
-          onPress={() => navigation.navigate("Add")}
-          color={"#941a1d"}
-          title={"Add Employee"}
-        ></Button>
+        <View style={{ margin: 5 }}>
+          <Button
+            onPress={() => navigation.navigate("Add")}
+            color={"#941a1d"}
+            title={"Add Employee"}
+          ></Button>
+        </View>
       </View>
       <ScrollView>
         <View style={styles.staffContainer}>

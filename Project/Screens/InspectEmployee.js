@@ -32,20 +32,6 @@ export function InspectEmployee({ navigation }) {
           page.
         </Text>
         <View style={styles.detailsContainer}>
-          <Button
-            //This button navigates to the Modify Employee screen and passes the json object with all of the employees details
-            onPress={() =>
-              navigation.navigate("Modify", { array: employeeDetails })
-            }
-            color={"#941a1d"}
-            title={"Modify"}
-          />
-          <Button
-            onPress={() => navigation.navigate("Directory")}
-            color={"#941a1d"}
-            title={"Back to Directory"}
-          />
-
           <Text style={styles.normalText}>Name: {employeeDetails["Name"]}</Text>
           <Text style={styles.normalText}>
             Department: {employeeDetails["Department"]}
@@ -66,15 +52,33 @@ export function InspectEmployee({ navigation }) {
           <Text style={styles.normalText}>
             Country: {employeeDetails["Country"]}
           </Text>
-          <Button
-            onPress={async () => {
-              await deletePerson(employeeDetails);
-              navigation.navigate("Directory");
-            }}
-            color={"#941a1d"}
-            title={"Delete Employee"}
-            margin={5}
-          />
+          <View style={{ margin: 5 }}>
+            <Button
+              //This button navigates to the Modify Employee screen and passes the json object with all of the employees details
+              onPress={() =>
+                navigation.navigate("Modify", { array: employeeDetails })
+              }
+              color={"#941a1d"}
+              title={"Modify Employee"}
+            />
+          </View>
+          <View style={{ margin: 5 }}>
+            <Button
+              onPress={async () => {
+                await deletePerson(employeeDetails);
+                navigation.navigate("Directory");
+              }}
+              color={"#941a1d"}
+              title={"Delete Employee"}
+            />
+          </View>
+          <View style={{ margin: 5 }}>
+            <Button
+              onPress={() => navigation.navigate("Directory")}
+              color={"#941a1d"}
+              title={"Back to Directory"}
+            />
+          </View>
         </View>
       </View>
     </ScrollView>

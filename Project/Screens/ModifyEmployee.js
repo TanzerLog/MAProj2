@@ -43,6 +43,7 @@ export function ModifyEmployee({ navigation }) {
   const [zip, onChangeZIP] = useState(employeeDetails["ZIP"]);
   const [country, onChangeCountry] = useState(employeeDetails["Country"]);
 
+  //function for modifying details stored for an employee in the database
   const modifyPerson = async (employeeDetails) => {
     const response = await fetch(ip + "/modify_person", {
       method: "POST",
@@ -115,41 +116,46 @@ export function ModifyEmployee({ navigation }) {
             value={country}
           ></TextInput>
         </View>
-        <Button
-          onPress={async () => {
-            if (
-              employeeDetails["Name"] == name &&
-              employeeDetails["Phone"] == phone &&
-              employeeDetails["DepartmentID"] == selectedDepartment &&
-              employeeDetails["Street"] == street &&
-              employeeDetails["City"] == city &&
-              employeeDetails["State"] == state &&
-              employeeDetails["ZIP"] == zip &&
-              employeeDetails["Country"] == country
-            ) {
-              //put in an alert here
-              console.log("No change");
-            } else {
-              employeeDetails["Name"] = name;
-              employeeDetails["Phone"] = phone;
-              employeeDetails["DepartmentID"] = selectedDepartment;
-              employeeDetails["Street"] = street;
-              employeeDetails["City"] = city;
-              employeeDetails["State"] = state;
-              employeeDetails["ZIP"] = zip;
-              employeeDetails["Country"] = country;
-              await modifyPerson(employeeDetails);
-              navigation.navigate("Employee", { array: employeeDetails });
-            }
-          }}
-          color={"#941a1d"}
-          title={"Save Changes"}
-        />
-        <Button
-          onPress={() => navigation.navigate("Directory")}
-          color={"#941a1d"}
-          title={"Back to Directory"}
-        />
+        <View style={{ margin: 5 }}>
+          <Button
+            //checks that a change has been made, updates database with new values if change found
+            onPress={async () => {
+              if (
+                employeeDetails["Name"] == name &&
+                employeeDetails["Phone"] == phone &&
+                employeeDetails["DepartmentID"] == selectedDepartment &&
+                employeeDetails["Street"] == street &&
+                employeeDetails["City"] == city &&
+                employeeDetails["State"] == state &&
+                employeeDetails["ZIP"] == zip &&
+                employeeDetails["Country"] == country
+              ) {
+                alert("You must change at least one field before saving");
+                console.log("No change");
+              } else {
+                employeeDetails["Name"] = name;
+                employeeDetails["Phone"] = phone;
+                employeeDetails["DepartmentID"] = selectedDepartment;
+                employeeDetails["Street"] = street;
+                employeeDetails["City"] = city;
+                employeeDetails["State"] = state;
+                employeeDetails["ZIP"] = zip;
+                employeeDetails["Country"] = country;
+                await modifyPerson(employeeDetails);
+                navigation.navigate("Employee", { array: employeeDetails });
+              }
+            }}
+            color={"#941a1d"}
+            title={"Save Changes"}
+          />
+        </View>
+        <View style={{ margin: 5 }}>
+          <Button
+            onPress={() => navigation.navigate("Directory")}
+            color={"#941a1d"}
+            title={"Back to Directory"}
+          />
+        </View>
       </View>
     </ScrollView>
   );
