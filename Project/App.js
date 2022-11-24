@@ -13,31 +13,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Directory"
-          component={EmployeeDirectory}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Employee"
-          component={InspectEmployee}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Modify"
-          component={ModifyEmployee}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Add"
-          component={AddEmployee}
-          options={{ headerShown: false }}
-        />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Directory" component={EmployeeDirectory} />
+        <Stack.Screen name="Employee" component={InspectEmployee} />
+        <Stack.Screen name="Modify" component={ModifyEmployee} />
+        <Stack.Screen name="Add" component={AddEmployee} />
       </Stack.Navigator>
     </NavigationContainer>
   );

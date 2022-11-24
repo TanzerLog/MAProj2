@@ -132,6 +132,25 @@ export function ModifyEmployee({ navigation }) {
               ) {
                 alert("You must change at least one field before saving");
                 console.log("No change");
+              } else if (
+                name == null ||
+                name == "" ||
+                phone == null ||
+                phone == "" ||
+                selectedDepartment == null ||
+                street == null ||
+                street == "" ||
+                city == null ||
+                city == "" ||
+                state == null ||
+                state == "" ||
+                zip == null ||
+                zip == "" ||
+                country == null ||
+                country == ""
+              ) {
+                alert("No fields may be blank.");
+                console.log("No change");
               } else {
                 employeeDetails["Name"] = name;
                 employeeDetails["Phone"] = phone;

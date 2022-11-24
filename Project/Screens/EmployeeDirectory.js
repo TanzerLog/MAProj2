@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     bottomPadding: 10,
+    margin: 30,
   },
 
   staffContainer: {
